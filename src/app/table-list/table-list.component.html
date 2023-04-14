@@ -1,0 +1,133 @@
+<div class="panel-header panel-header-sm">
+  
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h3 class="header-title"><strong class="text-primary"> <i> Liste Sports</i> </strong></h3>
+          <br><br>
+          <div class="container">
+          
+             
+                    
+            <div class="row">
+           <div class="col-md-8">
+              <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Rechercher..">
+              <br>
+            </div>
+
+            <div class="col-md-2">
+               <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="width:130px;" class="btn btn-round btn-primary">Ajouter Sport </a><br>
+               <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Ajouter Sport</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form  #f="ngForm">
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Type:</label>
+                            <input type="text"name="type" [(ngModel)]="newsport.type"class="form-control" id="recipient-name">
+                          </div>
+   
+                          <div class="form-group">
+                              <label for="recipient-name" class="col-form-label">Description:</label>
+                              <input type="text" name="description"[(ngModel)]="newsport.description" class="form-control" id="recipient-name">
+                          </div>
+                          <div class="form-group">
+                            <label for="recipient-name" class="col-form-label">Pays:</label>
+                            <input type="text" name="description"[(ngModel)]="newsport.pays" class="form-control" id="recipient-name">
+                        </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                        <button type="button" (click)="createsport(f)" class="btn btn-primary">Enregistrer</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <br>
+          <br>
+              <div>
+                  <table id="myTable"  class="table table-bordered ">
+                    <tr class="header">
+                        <th ><span class="text-dark" >Type </span></th>
+                        <th style="width: 300px;"><span class="text-dark">Description</span></th>
+                        <th style="width: 300px;"><span class="text-dark">Pays</span></th>
+                        <th style="width: 300px;"></th>
+                      </tr>  
+                    <tbody >
+                      <tr *ngFor="let spo of sport">
+                        <td><span class="text-dark" >{{spo.type}}</span></td>
+                        <td><span class="text-dark" >{{spo.description}}</span></td>
+                        <td><span class="text-dark" >{{spo.pays}}</span></td>
+                        <td><a (click)="clickMethod(spo.id,spo.type)" ><i class="fa fa-trash"></i></a>
+                                                               
+                          <a (click)="selectSportDetails(spo)"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"><i class='fa fa-bars'></i></a></td>
+                          <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabel">Details Sport</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-body">
+                                  <form  #f="ngForm">
+                                    <div class="form-group">
+                                      <label  class="col-form-label">Type:</label>
+                                      <dd >{{newsport.type}}</dd>
+                                  </div>
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Description:</label>
+                                    <dd >{{newsport.description}}</dd>
+                                </div>
+                                    <div class="form-group">
+                                      <label  class="col-form-label">pays:</label>
+                                      <dd >{{newsport.pays}}</dd>
+                                    </div>
+                                 
+                               
+                            
+                                  </form>
+                             
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                 
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+          </div>  
+             
+           
+      
+      
+         
+             
+         
+       
+          <!-- core  -->
+        
+        
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

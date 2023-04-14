@@ -1,0 +1,215 @@
+<div class="panel-header panel-header-sm">
+  
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h3 class="header-title"><strong class="text-primary"> <i> Liste Matchs</i> </strong></h3>
+          <br><br>
+          <div class="container">
+          
+             
+                    
+                      <div class="row">
+                     <div class="col-md-8">
+                     
+                      <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Rechercher..">
+                        <br>
+                      </div>
+
+                      <div class="col-md-2">
+                         <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="width:130px;" class="btn btn-round btn-primary">Ajouter Match </a><br>
+                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter Match</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form  #f="ngForm">
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Nom:</label>
+                                    <input type="text"  class="form-control"[(ngModel)]="newmatch.nom" name="nom" >
+                                </div>
+                                <div class="form-group">
+                                  <label  class="col-form-label">Date Match:</label>
+                                  <input type="date"  [(ngModel)]="newmatch.date_match" name="date_match" class="form-control" >
+                              </div>
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Temps Debut:</label>
+                                    <input type="text" [(ngModel)]="newmatch.temp_deb" name="temp_deb" class="form-control" >
+                                  </div>
+                               
+                               
+                                <div class="form-group">
+                                  <label  class="col-form-label">Temps Fin:</label>
+                                  <input type="text" [(ngModel)]="newmatch.temp_fin" name="temp_fin"class="form-control" >
+                              </div>
+                              <div class="form-group">
+                                <label  class="col-form-label">Pari:</label>
+                                <input type="text" [(ngModel)]="newmatch.pari_montant" name="pari_montant"class="form-control" >
+                            </div>
+
+                            <div class="form-group">
+                              <label  class="col-form-label">Resultat:</label>
+                              <select class="form-control"  [(ngModel)]="newmatch.resultat" name="resultat" required>
+                                <option value="">En cours</option>
+                               
+                                <option   value='1' >Equip 1</option>
+                                <option   value='x' >Egaux</option>
+                                <option   value='2' >Equip 2</option>
+                                
+                              </select>
+                             
+                          </div>
+                          <!-- <div class="form-group">
+                            <label  class="col-form-label">Resultat:</label>
+                            <input type="text" [(ngModel)]="newmatch.PariChoisi.montant_gagner" name="resultat"class="form-control" >
+                        </div> -->
+                 
+           
+                            <div class="form-group">
+                              <label >Sport:</label>
+                              <select class="form-control"  [(ngModel)]="newmatch.sport.id" name="sport" required>
+                                <option value="">Choisir Sport</option>
+                                <option    *ngFor="let n of sport" [value]="n.id" >{{n.type}}</option>
+                                
+                              </select>
+                          </div>
+                                </form>
+                           
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="button" (click)="creatematch(f)" class="btn btn-primary">Enregistrer</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                        <div>
+                            <table id="myTable"  class="table table-bordered ">
+                              <tr class="header">
+                                  <th style="width: 300px;"><span class="text-dark" >Nom </span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Date Match</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Temps Debut</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Temps Fin</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Resultat</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Pari</span></th>
+                                 
+                                  <th style="width: 300px;"><span class="text-dark">Sport</span></th>
+                                  <th style="width: 1000px;"></th>
+                              </tr>
+                              <tbody >
+                                <tr  *ngFor="let spo of match">
+                                  <td><span class="text-dark" >{{spo.nom}}</span></td>
+                                  <td><span class="text-dark" >{{spo.date_match}}</span></td>
+                                  <td><span class="text-dark" >{{spo.temp_deb}}</span></td>
+                                  <td><span class="text-dark" >{{spo.temp_fin}}</span></td>
+                                 
+                                  
+                                  <td *ngIf="spo.resultat == 1">Equipe1<span class="text-dark" ></span></td>
+                                   <td *ngIf="spo.resultat === 'x'">Egaux<span class="text-dark" ></span></td> 
+                                  <td *ngIf="spo.resultat == 2">Equipe2<span class="text-dark" ></span></td>
+                                  <td><span class="text-dark" >{{spo.pari_montant}}</span></td>
+                                  <td><span class="text-dark" >{{spo.sport.type}}</span></td>
+                                   <td><a (click)="clickMethod(spo.id, spo.type)" ><i class="fa fa-trash"></i></a>
+                                    <a (click)="selectMatch(spo)"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" ><i class="fa fa-edit" ></i></a>
+                                   <a (click)="selectMatchDetails(spo)"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"><i class='fa fa-bars'></i></a></td>
+                                   
+                                   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Details Match</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form  #f="ngForm">
+                                            <div class="form-group">
+                                              <label  class="col-form-label">Nom:</label>
+                                              <dd >{{newmatch.nom}}</dd>
+                                          </div>
+                                          <div class="form-group">
+                                            <label  class="col-form-label">Date Match:</label>
+                                            <dd >{{newmatch.date_match}}</dd>
+                                        </div>
+                                            <div class="form-group">
+                                              <label  class="col-form-label">Temps Debut:</label>
+                                              <dd >{{newmatch.temp_deb}}</dd>
+                                            </div>
+                                         
+                                         
+                                          <div class="form-group">
+                                            <label  class="col-form-label">Temps Fin:</label>
+                                            <dd >{{newmatch.temp_fin}}</dd>
+                                        </div>
+                                        <div class="form-group">
+                                          <label  class="col-form-label">Resultat:</label>
+                                          <dd >{{newmatch.resultat}}</dd>
+                                      </div>
+                                        <div class="form-group">
+                                          <label  class="col-form-label">Pari:</label>
+                                          <dd >{{newmatch.pari_montant}}</dd>
+                                      </div>
+                     
+                                      <div class="form-group">
+                                        <label  class="col-form-label">Sport:</label>
+                                        <dd >{{newmatch.sport.id}}</dd>
+                                    </div>
+                                          </form>
+                                     
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                         
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  </tr>
+                                <!-- <tr>
+                                  <td><span class="text-light" ></span>Ligue des Champions </td>
+                                  <td><span class="text-light" ></span>10/05/2022</td>
+                                  <td><span class="text-light" ></span>18:00</td>
+                                  <td><span class="text-light" ></span>20:00</td>
+                                  <td><span class="text-light" ></span>Equipe 1</td>
+                                  <td><span class="text-light" ></span>3</td>
+                                  <td><span class="text-light" ></span>Football</td>
+                                   <td><a ><i class="fa fa-trash"></i></a>
+                                   <a ><i class="fa fa-edit" ></i></a>
+                                   <a ><i class='fa fa-bars'></i></a></td>
+                                </tr> -->
+                                
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>  
+              
+             
+           
+      
+      
+         
+             
+         
+       
+          <!-- core  -->
+        
+        
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

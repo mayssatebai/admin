@@ -1,0 +1,46 @@
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="registre.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500&display=swap" rel="stylesheet">
+</head>
+<div class="container-fluid">
+    <div class="row">
+        
+        <div class="col-sm-6 col-md-4 intro-section">
+           
+        </div>
+        <div class="col-sm-6 col-md-4 form-section">
+            <div class="login-wrapper">
+                <h2 style="text-align: center;" class="login-title">S'Inscrire</h2>
+                <form #f="ngForm"  ngNativeValidate>
+                    <div class="form-group"> 
+                        <label for="email" class="sr-only">Nom</label> 
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Nom"  required>
+                     </div>
+                     <div class="form-group"> 
+                        <label for="email" class="sr-only">Prenom</label> 
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Prenom"  required>
+                     </div>
+                    <div class="form-group"> 
+                        <label for="email" class="sr-only">Numero Tel</label> 
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Numero Tel"  required>
+                     </div>
+                     <div class="form-group"> 
+                        <label for="email" class="sr-only">Email</label> 
+                        <input type="email" name="email" id="email" class="form-control" placeholder="Email"  required>
+                     </div>
+                    <div class="form-group mb-3">
+                         <label for="password" class="sr-only">Mot de passe</label> 
+                         <input type="password" name="password" id="password" class="form-control" placeholder="Mot de Passe"  required> </div>
+                    <div class="footer">
+                        <button style="margin-left: 80px; font-size: x-large;" class="btn btn-warning">Valider</button>
+                    </div>                </form><br>
+                <p style="font-size: x-large;" class="login-wrapper-footer-text">  <a [routerLink]="['/login']" class="text-reset">Se connecter</a></p>
+            </div>
+        </div>
+        <div class="col-sm-6 col-md-4 intro-section">
+           
+        </div>
+    </div>
+</div>

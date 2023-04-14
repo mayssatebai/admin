@@ -1,0 +1,38 @@
+
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+ 
+}
+
+
+
+.fa-trash {
+    background: #f08b08;
+  color: black;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+ 
+}
+.fa-edit {
+    background: #f08b08;
+    
+  color: black;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+}
+.fa-bars{
+    background: #f08b08;
+  color: black;
+  height: 40px;
+  width: 40px;
+  margin-left: 10px;
+  
+}
+
+  

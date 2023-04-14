@@ -1,0 +1,182 @@
+<div class="panel-header panel-header-sm">
+  
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h3 class="header-title"><strong class="text-primary"> <i> Liste Equipes  </i> </strong></h3>
+          <br><br>
+          <div class="container">
+          
+             
+                    
+                      <div class="row">
+                     <div class="col-md-8">
+                     
+                      <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Rechercher..">
+                        <br>
+                      </div>
+
+                      <div class="col-md-2">
+                         <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="width:130px;" class="btn btn-round btn-primary">Ajouter Equipe </a><br>
+                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter Equipe</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form  #f="ngForm">
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Nom:</label>
+                                    <input type="text"  class="form-control"[(ngModel)]="newequipe.nom" name="nom" >
+                                </div>
+                                <!-- <div class="form-group">
+                                  <label  class="col-form-label">Niveau:</label>
+                                  <input type="date"  [(ngModel)]="newequipe.niveau" name="niveau" class="form-control" >
+                              </div> -->
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Typ:</label>
+                                    <input type="text" [(ngModel)]="newequipe.type" name="type" class="form-control" >
+                                  </div>
+                               
+                               
+                                <div class="form-group">
+                                  <label  class="col-form-label">Description:</label>
+                                  <input type="text" [(ngModel)]="newequipe.description" name="description"class="form-control" >
+                              </div>
+                              <div class="form-group">
+                                <label  class="col-form-label">Resultat:</label>
+                                <input type="text" [(ngModel)]="newequipe.res" name="res"class="form-control" >
+                            </div>
+           
+                            <div class="form-group">
+                              <label >Match:</label>
+                              <select class="form-control"  [(ngModel)]="newequipe.pari_id" name="pari_id" required>
+                                <option value="" [selected]="true"
+                                 >Choisir Match</option>
+                                <option    *ngFor="let n of match" [value]="n.id" >{{n.nom}}</option>
+                                
+                              </select>
+                          </div>
+                                </form>
+                           
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="button" (click)="createequipe(f)" class="btn btn-primary">Enregistrer</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                        <div>
+                            <table id="myTable"  class="table table-bordered ">
+                              <tr class="header">
+                                  <th style="width: 300px;"><span class="text-dark" >Nom </span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Niveau</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Type</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Description</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Resultat</span></th>
+                                  <!-- <th style="width: 300px;"><span class="text-dark">Match</span></th> -->
+                                 
+                                  
+                                  <th style="width: 1000px;"></th>
+                              </tr>
+                              <tbody >
+                                <tr  *ngFor="let spo of equipe;">
+                                  <!-- <td *ngIf="spo.equipe[0].id!== 0"><span class="text-dark" >{{spo.equipe[0].nom}}</span></td> 
+                                  -->
+                                  <td ><span class="text-dark" >{{spo.nom}}</span></td>
+                                  <td ><span class="text-dark" >{{spo.niveau}}</span></td>
+                                  <td ><span class="text-dark" >{{spo.type}}</span></td>
+                                  <td > <span class="text-dark" >{{spo.description}}</span></td>
+                                 
+                                  <td ><span class="text-dark" >{{spo.res}}</span></td>
+                                 
+                                  <!-- <td *ngIf="spo.id == spo.equipe[0].pari_id && spo.equipe[0].id!== 0"><span class="text-dark" >{{spo.nom}}</span></td> -->
+                                   <td ><a (click)="clickMethod(spo.id, spo.nom)" ><i class="fa fa-trash"></i></a>
+                                    <a (click)="selectEquipe(spo)"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" ><i class="fa fa-edit" ></i></a>
+                                   <a (click)="selectEquipeDetails(spo)"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"><i class='fa fa-bars'></i></a></td>
+                                   
+                                   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Details Equipe</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form  #f="ngForm">
+                                            <div class="form-group">
+                                              <label  class="col-form-label">Nom:</label>
+                                              <dd >{{newequipe.nom}}</dd>
+                                          </div>
+                                          <div class="form-group">
+                                            <label  class="col-form-label">Niveau:</label>
+                                            <dd >{{newequipe.niveau}}</dd>
+                                        </div>
+                                            <div class="form-group">
+                                              <label  class="col-form-label">Description:</label>
+                                              <dd >{{newequipe.description}}</dd>
+                                            </div>
+                                         
+                                         
+                                          <div class="form-group">
+                                            <label  class="col-form-label">Type:</label>
+                                            <dd >{{newequipe.type}}</dd>
+                                        </div>
+                                        <div class="form-group">
+                                          <label  class="col-form-label">Resultat:</label>
+                                          <dd >{{newequipe.res}}</dd>
+                                      </div>
+                     
+                                      <!-- <div class="form-group">
+                                        <label  class="col-form-label">Match:</label>
+                                        <dd >{{newequipe.pari_id}}</dd>
+                                    </div> -->
+                                          </form>
+                                     
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                         
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  </tr>
+                                
+                                
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>  
+              
+             
+           
+      
+      
+         
+             
+         
+       
+          <!-- core  -->
+        
+        
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,184 @@
+<!-- <table id="myInput"  class="table table-bordered ">
+                                  <th style="width: 300px;" ><span class="text-dark" >Nom </span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Prenom</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Email</span></th> -->
+<!-- <th style="width: 300px;"><span class="text-dark">Mot de passe</span></th> -->
+<!-- <th style="width: 300px;"><span class="text-dark">Numero Tel</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Ville</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Code postal</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Compte</span></th>
+                                  <th style="width: 700px;"></th>
+                                  
+                              <tbody id="myTable">
+                                <tr>
+                                  <td><span class="text-light" ></span>Siwar</td>
+                                  <td><span class="text-light" ></span>testPrenom</td>
+                                  <td><span class="text-light" ></span>test@gmail.com</td> -->
+<!-- <td><span class="text-light" ></span></td> -->
+<!-- <td><span class="text-light" ></span>22765876</td>
+                                  <td><span class="text-light" ></span>Tunis</td>
+                                  <td><span class="text-light" ></span>2045</td>
+                                  <td> 
+                                    <input style="background: #f08b08;color: black; height: 40px;width: 40px;margin-left: 50px;margin-top: -19px;" type="checkbox" class="form-check-input hdh" Checked="checked" id="exampleCheck1"></td>
+                                   <td><a ><i class="fa fa-trash"></i> </a>
+                                  
+                                   <a type="button"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"   ><i class='fa fa-bars'></i></a>
+                                  </td>
+                                </tr>
+                                <tr>
+                                  <td><span class="text-light" ></span>Ahmed</td>
+                                  <td><span class="text-light" ></span>Ben Ahmed</td>
+                                  <td><span class="text-light" ></span>testahmed@gmail.com</td> -->
+<!-- <td><span class="text-light" ></span></td> -->
+<!-- <td><span class="text-light" ></span>21543876</td>
+                                  <td><span class="text-light" ></span>Tunis</td>
+                                  <td><span class="text-light" ></span>2045</td>
+                                  <td> 
+                                    <input style="background: #f08b08;color: black; height: 40px;width: 40px;margin-left: 50px;margin-top: -19px;" type="checkbox" class="form-check-input hdh" Checked="checked" id="exampleCheck1"></td>
+                                   <td><a ><i class="fa fa-trash"></i> </a>
+                                  
+                                   <a type="button"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo"  ><i class='fa fa-bars'></i></a>
+                                  </td>
+                                </tr>
+                                
+                              </tbody>
+                            </table> -->
+
+
+
+                            <div class="panel-header panel-header-sm">
+
+                            </div>
+                            <div class="main-content">
+                              <div class="row">
+                                <div class="col-md-12">
+                                  <div class="card ">
+                                    <div class="card-header ">
+                                      <h3 class="header-title"><strong class="text-primary"> <i> Liste Parieurs</i> </strong></h3>
+                                      <br><br>
+                                      <div class="container">
+                            
+                            
+                            
+                                        <div class="row">
+                                          <div class="col-md-8">
+                            
+                                            <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Rechercher..">
+                                            <br>
+                                          </div>
+                            
+                                          <div class="col-md-2">
+                            
+                                          </div>
+                                        </div>
+                                        <br>
+                                        <br>
+                                        <div>
+                                          <table id="myTable" class="table table-bordered ">
+                                            <tr class="header">
+                                              <th style="width: 300px;"><span class="text-dark">Nom </span></th>
+                                              <th style="width: 300px;"><span class="text-dark">Prenom</span></th>
+                                              <th style="width: 300px;"><span class="text-dark">Email</span></th>
+                                              <!-- <th style="width: 300px;"><span class="text-dark">Mot de passe</span></th> -->
+                                              <th style="width: 300px;"><span class="text-dark">Numero Tel</span></th>
+                                              <th style="width: 300px;"><span class="text-dark">Ville</span></th>
+                                              <th style="width: 300px;"><span class="text-dark">Code postal</span></th>
+                                              <th style="width: 300px;"><span class="text-dark">Compte</span></th>
+                                              <th style="width: 700px;"></th>
+                                            </tr>
+                                            <tbody>
+                                              <tr *ngFor="let spo of parieur;let i = index; trackBy: trackByFn">
+                                                <td><span class="text-dark">{{spo.nom}}</span></td>
+                                                <td><span class="text-dark">{{spo.prenom}}</span></td>
+                                                <td><span class="text-dark">{{spo.email}}</span></td>
+                            
+                                                <td><span class="text-dark">{{spo.tel}}</span></td>
+                                                <td><span class="text-dark">{{spo.ville}}</span></td>
+                            
+                                                <td><span class="text-dark">{{spo.codePostale}}</span></td>
+                            
+                                                <td>
+                                                  <form #f="ngForm">
+                                                    <div class="form-group">
+                                                      <!-- <input style="background: #f08b08;color: black; height: 40px;width: 40px;margin-left: 50px;margin-top: -19px;" [(ngModel)]="newparieur.compt" id="saveUserNameCheckBox" type="checkbox" class="form-check-input hdh" (click)="edit(f)" (change)="onSaveUsernameChanged(saveUserNameCheckBox.checked)"    id="exampleCheck1"> -->
+                                                      <input #saveUserNameCheckBox id="saveUserNameCheckBox" type="checkbox"
+                                                        [(ngModel)]="parieur[i].compt" [checked]="parieur[i].compt==false"  name="compt" (click)="select(spo)"
+                                                        (change)="onSaveUsernameChanged(saveUserNameCheckBox.checked)" />
+                                                    </div>
+                                                  </form>
+                                                </td>
+                                                <td><a (click)="clickMethod(spo.id, spo.nom)"><i class="fa fa-trash"></i></a>
+                            
+                                                  <a (click)="selectParieurDetails(spo)" data-toggle="modal" data-target="#exampleModal2"
+                                                    data-whatever="@mdo"><i class='fa fa-bars'></i></a>
+                                                </td>
+                            
+                                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                                                  aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Details Parieur</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        <form #f="ngForm">
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Nom:</label>
+                                                            <dd>{{newparieur.nom}}</dd>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Prenom:</label>
+                                                            <dd>{{newparieur.prenom}}</dd>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Email:</label>
+                                                            <dd>{{newparieur.email}}</dd>
+                                                          </div>
+                            
+                            
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Numero Tel:</label>
+                                                            <dd>{{newparieur.tel}}</dd>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Ville:</label>
+                                                            <dd>{{newparieur.ville}}</dd>
+                                                          </div>
+                            
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Code Postal:</label>
+                                                            <dd>{{newparieur.codePostale}}</dd>
+                                                          </div>
+                                                          <div class="form-group">
+                                                            <label class="col-form-label">Code Postal:</label>
+                                                            <dd *ngIf="newparieur.compt==true">Activé</dd>
+                                                            <dd *ngIf="newparieur.compt==false">Désactivé</dd>
+                                                          </div>
+                            
+                                                        </form>
+                            
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                            
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              </tr>
+                            
+                            
+                                            </tbody>
+                                          </table>
+                                        </div>
+                                      </div>
+                            
+                            
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>

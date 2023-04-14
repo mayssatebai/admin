@@ -1,0 +1,176 @@
+<div class="panel-header panel-header-sm">
+  
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card ">
+        <div class="card-header ">
+          <h3 class="header-title"><strong class="text-primary"> <i> Liste Joueurs</i> </strong></h3>
+          <br><br>
+          <div class="container">
+          
+             
+                    
+                      <div class="row">
+                     <div class="col-md-8">
+                     
+                      <input class="form-control" id="myInput" onkeyup="myFunction()" type="text" placeholder="Rechercher..">
+                        <br>
+                      </div>
+
+                      <div class="col-md-2">
+                         <a type="button" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" style="width:130px;" class="btn btn-round btn-primary">Ajouter Joueur </a><br>
+                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ajouter Joueur</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                                </button>
+                              </div>
+                              <div class="modal-body">
+                                <form  #f="ngForm">
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Nom:</label>
+                                    <input type="text"  class="form-control"[(ngModel)]="newjoueur.nom" name="nom" >
+                                </div>
+                                <!-- <div class="form-group">
+                                  <label  class="col-form-label">Niveau:</label>
+                                  <input type="date"  [(ngModel)]="newequipe.niveau" name="niveau" class="form-control" >
+                              </div> -->
+                                  <div class="form-group">
+                                    <label  class="col-form-label">Prenom:</label>
+                                    <input type="text" [(ngModel)]="newjoueur.prenom" name="prenom" class="form-control" >
+                                  </div>
+                               
+                               
+                                <div class="form-group">
+                                  <label  class="col-form-label">Numero:</label>
+                                  <input type="text" [(ngModel)]="newjoueur.numero" name="numero"class="form-control" >
+                              </div>
+                              <div class="form-group">
+                                <label  class="col-form-label">Poste:</label>
+                                <input type="text" [(ngModel)]="newjoueur.poste" name="poste"class="form-control" >
+                            </div>
+           
+                            <div class="form-group">
+                              <label >Equipe:</label>
+                              <select class="form-control"  [(ngModel)]="newjoueur.equipe.id" name="equipe" required>
+                                <option >Choisir Equipe</option>
+                                <option    *ngFor="let n of equipe" [value]="n.id" >{{n.nom}}</option>
+                                
+                              </select>
+                          </div>
+                                </form>
+                           
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                <button type="button" (click)="createjoueur(f)" class="btn btn-primary">Enregistrer</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                        <div>
+                            <table id="myTable"  class="table table-bordered ">
+                              <tr class="header">
+                                  <th style="width: 300px;"><span class="text-dark" >Nom </span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Prenom</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Numero</span></th>
+                                  <th style="width: 300px;"><span class="text-dark">Poste</span></th>
+                                
+                                  <th style="width: 300px;"><span class="text-dark">Equipe</span></th>
+                                 
+                                  
+                                  <th style="width: 1000px;"></th>
+                              </tr>
+                              <tbody >
+                                <tr  *ngFor="let spo of joueur">
+                                  <td><span class="text-dark" >{{spo.nom}}</span></td>
+                                  <td><span class="text-dark" >{{spo.prenom}}</span></td>
+                                  <td><span class="text-dark" >{{spo.numero}}</span></td>
+                                  <td><span class="text-dark" >{{spo.poste}}</span></td>
+                                 
+                                  <td><span class="text-dark" >{{spo.equipe.nom}}</span></td>
+                                 
+                                 
+                                   <td><a (click)="clickMethod(spo.id, spo.nom)" ><i class="fa fa-trash"></i></a>
+                                    <a (click)="selectJoueur(spo)"  data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" ><i class="fa fa-edit" ></i></a>
+                                   <a (click)="selectJoueurDetails(spo)"  data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo"><i class='fa fa-bars'></i></a></td>
+                                   
+                                   <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Details Joueur</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <form  #f="ngForm">
+                                            <div class="form-group">
+                                              <label  class="col-form-label">Nom:</label>
+                                              <dd >{{newjoueur.nom}}</dd>
+                                          </div>
+                                          <div class="form-group">
+                                            <label  class="col-form-label">Prenom:</label>
+                                            <dd >{{newjoueur.prenom}}</dd>
+                                        </div>
+                                            <div class="form-group">
+                                              <label  class="col-form-label">Numero:</label>
+                                              <dd >{{newjoueur.numero}}</dd>
+                                            </div>
+                                         
+                                         
+                                          <div class="form-group">
+                                            <label  class="col-form-label">Poste:</label>
+                                            <dd >{{newjoueur.poste}}</dd>
+                                        </div>
+                                        <div class="form-group">
+                                          <label  class="col-form-label">Equipe:</label>
+                                          <dd >{{newjoueur.equipe.nom}}</dd>
+                                      </div>
+                     
+                                      
+                                          </form>
+                                     
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Fermer</button>
+                                         
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  </tr>
+                                
+                                
+                              </tbody>
+                            </table>
+                          </div>
+                    </div>  
+              
+             
+           
+      
+      
+         
+             
+         
+       
+          <!-- core  -->
+        
+        
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
