@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class EquipeController {
 	@Autowired	
 	EquipeService equipeService;

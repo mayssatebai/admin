@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.iset.Service.JoueurService;
 import org.iset.entities.Joueur;
-import org.iset.entities.Sport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class JoueurController {
 	@Autowired	
 	JoueurService joueurservice;
@@ -29,7 +28,7 @@ public class JoueurController {
 		this.joueurservice = joueurservice;
 	}
 
-	@GetMapping("/Joueur")
+	@GetMapping("/joueur")
 	public List<Joueur> getallJoueur(){
 		
 		return (List<Joueur>) joueurservice.getAll();

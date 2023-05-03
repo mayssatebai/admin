@@ -1,6 +1,6 @@
 package org.iset.Controller;
 
-import java.util.Date;
+
 import java.util.List;
 
 import org.iset.Service.PariService;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 public class PariControlller {
 	@Autowired	
 	PariService pariService;

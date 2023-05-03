@@ -4,7 +4,6 @@ package org.iset.Controller;
 import java.util.List;
 
 import org.iset.Service.SportService;
-import org.iset.entities.Parieur;
 import org.iset.entities.Sport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 @RestController
-@CrossOrigin()
+@CrossOrigin(origins = "http://localhost:4200")
 
 public class SportController {
 	@Autowired
